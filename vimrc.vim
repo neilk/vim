@@ -47,20 +47,16 @@ syntax on
 " colors
 hi SpecialKey	  term=bold  cterm=bold  ctermfg=darkgrey  guifg=#333333
 hi NonText		  term=bold  cterm=bold  ctermfg=darkgrey  gui=bold      guifg=#333333
-highlight ExtraWhitespace ctermbg=darkgrey guibg=darkgrey
-
-" visible whitespace
-
-" highlight trailing spaces if not in insert mode
-autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+hi WrongIndent ctermbg=darkgrey guibg=darkgrey
 
 " settings for pad-mediawiki project
 autocmd BufNewFile,BufRead /Users/neilk/Documents/wmf/pad-mediawiki/* set nowrap tabstop=2 shiftwidth=2 expandtab;
 autocmd BufNewFile,BufRead /Users/neilk/Documents/wmf/pad-mediawiki/* set list
 autocmd BufNewFile,BufRead /Users/neilk/Documents/wmf/pad-mediawiki/* set listchars=tab:▸\ ,trail:·;
-autocmd BufNewFile,BufRead /Users/neilk/Documents/wmf/pad-mediawiki/* match ExtraWhitespace /^\s*\zs\t\+/;
+autocmd BufNewFile,BufRead /Users/neilk/Documents/wmf/pad-mediawiki/* match WrongIndent /^\s*\zs\t\+/;
 
 " settings for mediawiki projects
-autocmd BufNewFile,BufRead /Users/neilk/Sites/* set nowrap tabstop=8 shiftwidth=8 noexpandtab
-autocmd BufNewFile,BufRead /Users/neilk/Sites/* match ExtraWhitespace /^\t*\zs \+/
+autocmd BufNewFile,BufRead /Users/neilk/Sites/* set nowrap tabstop=4 shiftwidth=4 noexpandtab
+autocmd BufNewFile,BufRead /Users/neilk/Sites/* match WrongIndent /^\t*\zs \+\ze/
+autocmd BufNewFile,BufRead /Users/neilk/Sites/* set list
+autocmd BufNewFile,BufRead /Users/neilk/Sites/* set listchars=tab:\ \ ,trail:·
